@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hesapmakinasi</title>
+    
+<style>
+  body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+  }
+  .hesapmakinesi{
+    padding: 15px;
+    border-radius: 5px;
+    background-color: gray;
+    text-align: center;
+    box-shadow: 0px 2px 10px;
+    
+    
+    
+  }
+  .hesapmakinesi input{
+    font-family: MyCustomFont;
+    text-align: right;
+    font-size: 25px;
+  }
+  .button{
+    margin-top: 3px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap:5px;
+  }
+  button{
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: #fbfefb;
+    font-weight: bold;
+    }
+    button:hover{
+        background-color: #b2d0b7;
+    }
+    #eşit{
+        background-color: green;
+    }
+    #sil{
+        background-color: red;
+        font-weight: bold;
+    }
+    h3{
+        
+        position: relative;
+        bottom: 166px;
+        left: 211px;
+        font-size: 22px;
+        text-transform: capitalize;
+        color: darkgoldenrod;
+    }
+ 
+@font-face {
+ font-family: MyCustomFont;
+ src: url("digital-7.eot") /* EOT file for IE */
+}
+@font-face {
+ font-family: MyCustomFont;
+ src: url("digital-7.ttf") /* TTF file for CSS3 browsers */
+}
+
+
+
+</style>
+</head>
+<body>
+    <h3>Hesapmakinesi</h3>
+ <div class="hesapmakinesi">
+    <input type="text" id="sonuc" placeholder="0" readonly>
+    <div class="button">
+        <button onclick="ekle('7')">7</button>
+        <button onclick="ekle('8')">8</button>
+        <button onclick="ekle('9')">9</button>
+        <button id="sil" onclick="temizle()">c</button>
+        <button onclick="ekle('4')">4</button>
+        <button onclick="ekle('5')">5</button>
+        <button onclick="ekle('6')">6</button>
+        <button onclick="ekle('**2')">x²</button>
+        <button onclick="ekle('1')">1</button>
+        <button onclick="ekle('2')">2</button>
+        <button onclick="ekle('3')">3</button>
+        <button onclick="ekle('+')">+</button>
+        <button onclick="ekle('.')">.</button>
+        <button onclick="ekle('0')">0</button>
+        <button onclick="ekle('-')">-</button>
+        <button onclick="ekle('/')">/</button>
+        <button onclick="ekle('*')">*</button>
+        <button onclick="ekle('parantez')">()</button>
+        <button onclick="sil()">--</button>
+        <button id="eşit" onclick="hesapla()">=</button>
+        <button onclick="kareKök()">√¯</button>
+    </div>
+
+
+ </div>
+    
+    <script>
+        function kareKök(){
+            let z;
+            z  = document.getElementById("sonuc").value;
+            document.getElementById("sonuc").value = Math.sqrt(z);
+        }
+
+        function ekle(x) {
+            if(x=="parantez"){
+                let y ;
+                y = "("+document.getElementById("sonuc").value+")";
+                document.getElementById("sonuc").value=y;
+            }else{
+            document.getElementById("sonuc").value += x; }
+        }
+        function temizle() {
+            document.getElementById("sonuc").value = null
+        }
+        function hesapla(){
+            let x = document.getElementById("sonuc").value;
+            document.getElementById("sonuc").value = eval(x);
+        }
+        function sil(){
+            let x = document.getElementById("sonuc").value;
+            document.getElementById("sonuc").value =x.slice(0,-1)
+        }
+        // function kareAl(){
+        //     let x = document.getElementById("sonuc").value;
+        //     document.getElementById("sonuc").value =x**2;
+           
+        // }
+    </script>
+</body>
+</html>
